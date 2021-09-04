@@ -130,7 +130,7 @@ with col3:
     st.plotly_chart(g2, use_container_width=True)
 
 #-----------------------------------------------------------------------
-st.subheader('| WHERE WE ARE MAKING MORE MONEY')
+st.subheader('| WHERE ARE WE MAKING MORE MONEY')
 # Measurements
 col1, col2 = st.columns(2)
 # column 1 measurements
@@ -140,6 +140,15 @@ with col1:
 with col2:
     y = st.selectbox('Select the Y Axis', options=df.columns)
 
+# Show mean checkbox
+mean_yes = st.checkbox('Mean')
+if mean_yes:
+           df_mean = df.groupby(x).y.mean()
+           g4 = px.bar(df,
+            x= x,
+            y= y)
+           st.plotly_chart(g4, use_container_width=True)
+else:
 g4 = px.bar(df,
             x= x,
             y= y)
