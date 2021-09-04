@@ -143,8 +143,8 @@ with col2:
 # Show mean checkbox
 mean_yes = st.checkbox('Mean')
 if mean_yes:
-           df_mean = df.groupby(x).y.mean()
-           g4 = px.bar(df,
+           df_mean = df.groupby(x).mean().reset_index()
+           g4 = px.bar(df_mean,
             x= x,
             y= y)
            st.plotly_chart(g4, use_container_width=True)
