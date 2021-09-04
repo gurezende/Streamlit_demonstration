@@ -149,10 +149,10 @@ if mean_yes:
             y= y)
            st.plotly_chart(g4, use_container_width=True)
 else:
-g4 = px.bar(df,
-            x= x,
-            y= y)
-st.plotly_chart(g4, use_container_width=True)
+           g4 = px.bar(df,
+                       x= x,
+                       y= y)
+           st.plotly_chart(g4, use_container_width=True)
 
 #-----------------------------------------------------------------------
 
