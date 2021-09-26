@@ -81,20 +81,20 @@ st.markdown('---')
 st.subheader('| QUICK SUMMARY')
 
 col1, col2, col3, col4 = st.columns(4)
-# column 1
+# column 1 - Revenue Sum
 with col1:
     total = f'${int( df.total_bill.sum() ):,}'
     st.title(total)
     st.text('REVENUE')
-# column 2
+# column 2 - Count of meals
 with col2:
     st.title(df.city.count())
     st.text('MEALS')
-# column 3
+# column 3 - Sum of clients
 with col3:
     st.title(df.size.sum())
     st.text('CLIENTS')
-# column 4
+# column 4 - Count of cities
 with col4:
     st.title(df.city.nunique())
     st.text('CITIES')
@@ -103,7 +103,7 @@ with col4:
 
 # Graphics
 col1, col2, col3 = st.columns(3)
-# column 1
+# column 1 - Pie chart Gender
 with col1:
     ind1 = pd.DataFrame(df.groupby('sex').sex.count()).rename(columns={'sex':'count'}).reset_index()
     g1 = px.pie(ind1,
@@ -117,6 +117,7 @@ with col1:
                      showlegend=False)
     st.plotly_chart(g1, use_container_width=True)
 
+# column 2 - Bar chart Count Meals By day
 with col2:
     ind3 = pd.DataFrame(df.groupby('day').day.count()).rename(columns={'day':'count'}).reset_index()
     g3 = px.bar(ind3,
@@ -125,6 +126,7 @@ with col2:
                 title='| POPULAR DAYS')
     st.plotly_chart(g3, use_container_width=True)
 
+# column 3 - Pie chart Count Meals By Time
 with col3:
     ind2 = pd.DataFrame(df.groupby('time').time.count()).rename(columns={'time':'count'}).reset_index()
     g2 = px.pie(ind2,
@@ -142,10 +144,10 @@ with col3:
 st.subheader('| WHERE ARE WE MAKING MORE MONEY')
 # Measurements
 col1, col2 = st.columns(2)
-# column 1 measurements
+# column 1 X Axis
 with col1:
     x = st.selectbox('Select the X Axis', options=df.columns, index=7)
-# column 1 measurements
+# column 2 Y axis
 with col2:
     y = st.selectbox('Select the Y Axis', options=df.columns)
 
